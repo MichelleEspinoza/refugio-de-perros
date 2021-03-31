@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container justify-content-center ">
+	<br><br>
+<table class="table table-bordered mr-5">
+	<thead class="bg-secondary text-white">
+		<tr>
+			<td>#</td>
+			<td>Nombre</td>
+			<td>Sexo</td>
+			<td>Edad</td>
+			<td>Fecha de Rescate</td>
+			<td>Adoptante</td>
+			<td>Acciones</td>
+		</tr>
+
+	</thead>
+	<tbody>
+		<!-- usamos un objeto por que es una clase en lugar de usar diccionario como en una funcion -->
+		{% if object_list %}
+		{% for mascota in object_list %}
+		<tr>
+			<td>{{ mascota.id }}</td>
+			<td>{{ mascota.nombre }}</td>
+			<td>{{ mascota.sexo }}</td>
+			<td>{{ mascota.edad_aproximada }}</td>
+			<td>{{ mascota.fecha_rescate }}</td>
+			<td>{{ mascota.persona.nombre }} {{ mascota.persona.apellidos }}</td>
+			<td><a href="{% url 'mascota_editar' mascota.id %}" class="btn btn-primary">Editar</a> <a class="btn btn-danger" href="{% url 'mascota_eliminar' mascota.id %}">Eliminar</a></td>
+			
+		</tr>
+		{% endfor %}
+
+		{% else %}
+		<h1>NO HAY REGISTROS DE MASCOTAS</h1>
+		{% endif %}
+	</tbody>
+</table>
+<div class="pagination justify-content-center">
+<ul class="pagination">
+	<li class="page-item">
+		{% if page_obj.has_previous %}
+       	 <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+       	 <br><br><br>
+		{% endif %}
+        </li>
+	<li class="page-item">
+		{% if page_obj.has_next %}
+     	 <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a> 
+    	{% endif %}
+    </li>
+</ul>
+</div>
+
+</div>
+<br>
+{% endblock %}

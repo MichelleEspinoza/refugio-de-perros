@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<form method="post">
+	<!-- Token de seguridad para cada formulario -->
+	{% csrf_token %}
+	<!--Pintar formulario como parrafo-->
+	<div class="row justify-content-center" style="width: 80vw; padding-left: 15vw;">
+		<div class="col-md-8 col-md-offset-2">
+			<br>
+	{{ form.as_p }}
+	<!--o si solo se quiere un elemnto seria asi:
+	{{ form.nombre }}
+	-->
+			<button class="btn btn-primary btn-lg " type="submit" id="save">aviso</button>
+			<button class="btn btn-primary btn-lg " type="submit" >Guardar</button>
+		</div>
+		<br>
+	</div>
+	<br>
+</form>
+{% endblock %}

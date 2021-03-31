@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<br>
+<div class="container justify-content-center ">
+	<br><br>
+<table class="table table-bordered mr-5">
+	<thead class="bg-secondary text-white">
+		<tr>
+			<td>No. Solicitud</td>
+			<td>Adoptante</td>
+			<td>No. Mascotas</td>
+			<td>Razones</td>
+			<td>Acciones</td>
+		</tr>
+		
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for solicitud in object_list %}
+		<tr>
+			<td>{{ solicitud.id }}</td>
+			<td>{{ solicitud.persona.nombre }} {{solicitud.persona.apellidos}}</td>
+			<td>{{ solicitud.numero_mascotas }}</td>
+			<td>{{ solicitud.razones }}</td>
+			
+			<td>
+				<a href="{% url 'solicitud_editar' solicitud.id %}" class="btn btn-primary" href="#">Editar</a>
+				<a href="{% url 'solicitud_eliminar' solicitud.id %}" class="btn btn-danger" href="#">Eliminar</a>
+			</td>
+		</tr>
+		{% endfor %}
+		
+		{% else %}
+		<br><br>
+		<h1>NO HAY REGISTROS DE MASCOTAS</h1>
+		<br><br>
+		{% endif %}
+	</tbody>
+</table> 
+
+
+<div class="pagination justify-content-center">
+<ul class="pagination">
+	<li class="page-item">
+		{% if page_obj.has_previous %}
+       	 <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+			<br><br><br>
+		{% endif %}
+        </li>
+	<li class="page-item">
+		{% if page_obj.has_next %}
+     	 <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a> 
+    	{% endif %}
+    </li>
+</ul>
+</div>
+</div>
+<br>
+{% endblock%}

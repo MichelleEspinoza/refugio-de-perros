@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+{% block navbar%}
+{% endblock %}
+{% block content %}
+<div class="container-login100" style="background-image: url(https://images.unsplash.com/photo-1517198027781-72926775347c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1347&q=400);">
+    <br>   
+
+    <div style="height: 3vw;"></div>
+<h3 class="row  pt-5 pb-4 font-weight-bold text-white" style="width: 100vw; padding-left: 37vw;">Login</h3>
+<form method="post">
+	{% csrf_token %}
+	 <div class="row justify-content-center" style="width: 100vw; padding-left: 15vw;">
+    	<div class="col-md-6  col-md-offset-3">
+    		<div class="form-group text-white">
+        		<label for="username">Nombre de usuario:</label>
+        		<input style="width: 25vw;" class="form-control" type="text" name="username">
+    	   </div>
+        </div>
+    </div>    
+    <div class="row justify-content-center" style="width: 100vw; padding-left: 15vw;">
+    	<div class="col-md-6 col-md-offset-3">
+    		<div class="form-group text-white">
+        		<label for="username">Contraseña:</label>
+        		<input style="width: 25vw;" class="form-control" type="password" name="password">
+    	   </div>
+        </div>
+    </div>
+    <div class="row justify-content-center" style="width: 100vw; padding-left: 15vw;">
+    	<div class="col-md-6 col-md-offset-3">
+    		<div class="form-group">
+                <a class="pr-2 " href="{% url 'password_reset' %}">Olvidé mi contraseña </a>
+        		<input class="btn btn-primary" type="submit" value="Ingresar">
+    	   </div>
+        </div>
+    </div>
+</form>
+<div class="row" style="width: 100vw;">
+
+</div>
+<div style="height: 11vw;"></div>
+<a class="pt-5 pb- ml-5" href="{% url 'registrar' %}">Ir a Registrar usuario</a>
+
+<div style="height: 5vw;"></div>
+</div>
+{% endblock %}

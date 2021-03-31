@@ -1,0 +1,41 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e6b775;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand " href="{% url 'mascota_listar' %}"><img src="{% static 'img/logo1.png' %}" width="40" height="40" alt=""> ADOPT-ME </a>
+    <ul class="navbar-nav mr-auto mt-lg-0">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#">Mascotas <span class="caret"></span> </a>
+        <div class="dropdown-menu" aria-labelledby="themes">
+            <a class="dropdown-item" href="{% url 'mascota_crear' %}">Registrar</a>
+            <a class="dropdown-item" href="{% url 'mascota_listar' %}">Listar</a>
+        </div>
+      </li>
+<!--<span class="sr-only">(current)</span>-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#">Adopciones <span class="caret"></span> </a>
+        <div class="dropdown-menu" aria-labelledby="download">
+            <a class="dropdown-item" href="{% url 'solicitud_crear' %}">Solicitar</a>
+            <a class="dropdown-item" href="{% url 'solicitud_listar' %}">Listar solicitudes</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav  pl-auto">
+      <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank">by Michelle Espinoza</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" id="download">Opciones
+                        <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="download">
+                        <a class="dropdown-item" href="{% url 'logout' %}">Salir</a>
+                    </div>
+                </li>
+    </ul>
+  </div>
+</nav>
